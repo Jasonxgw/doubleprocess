@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!--  两个service通过aidl连接-->
         <service
             android:name=".LocalService"
             android:enabled="true"

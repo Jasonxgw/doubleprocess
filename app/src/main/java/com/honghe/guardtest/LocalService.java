@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class LocalService extends Service {
+    // 本地服务
     private static final String TAG = LocalService.class.getName();
     private MyBinder mBinder;
 
@@ -20,6 +21,7 @@ public class LocalService extends Service {
             IMyAidlInterface iMyAidlInterface = IMyAidlInterface.Stub.asInterface(service);
             try {
                 Log.e("LocalService", "connected with " + iMyAidlInterface.getServiceName());
+                // 本地进程 判断MainActivity为空，就去开启
                 if (MyApplication.getMainActivity() == null) {
                     Intent intent = new Intent(LocalService.this.getBaseContext(), MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -32,6 +34,7 @@ public class LocalService extends Service {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            // 断开时 拉起远程进程
             Toast.makeText(LocalService.this, "链接断开，重新启动 RemoteService", Toast.LENGTH_LONG).show();
             Log.e(TAG, "onServiceDisconnected: 链接断开，重新启动 RemoteService");
             startService(new Intent(LocalService.this, RemoteService.class));

@@ -6,7 +6,7 @@
 //按照C语言规则编译。jni依照C的规则查找函数，而不是C++，没有这一句运行时会崩溃报错：
 // java.lang.UnsatisfiedLinkError: Native method not found:
 extern "C"{
-
+//
 JNIEXPORT jstring JNICALL Java_com_honghe_guardtest_JniLoader_getHelloString
 (JNIEnv *env, jobject _this)
 {

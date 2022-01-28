@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 public class RemoteService extends Service {
+    // 远程服务
     private static final String TAG = RemoteService.class.getName();
     private MyBinder mBinder;
 
